@@ -16,7 +16,7 @@ export default function EditMovie({ movie, fetchData }) {
 	const [showEdit, setShowEdit] = useState(false);
 
 	const openEdit = (movieId) => {
-		fetch(`https://movieapp-api-lms1.onrender.com/movies/getMovie/${movieId}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/...`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			},

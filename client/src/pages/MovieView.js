@@ -28,7 +28,7 @@ export default function MovieView() {
 
 
 	const openComment = (movieId) => {
-		fetch(`https://movieapp-api-lms1.onrender.com/movies/getMovie/${movieId}`)
+		fetch(`${process.env.REACT_APP_API_URL}/...`)
 		.then(res => res.json())
 		.then(data => {
 			setTitle(data.title);

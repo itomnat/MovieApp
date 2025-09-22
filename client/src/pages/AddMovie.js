@@ -24,7 +24,7 @@ export default function AddMovie() {
 	const AddMovie = (e) => {
 		e.preventDefault();
 
-		fetch(`https://movieapp-api-lms1.onrender.com/movies/addMovie`, {
+		fetch(`${process.env.REACT_APP_API_URL}/...`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
