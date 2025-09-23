@@ -24,30 +24,41 @@ function App() {
     };
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            setUser({
+                id: null,
+                isAdmin: null
+            });
+            return;
+        }
 
         fetch(`${process.env.REACT_APP_API_URL}/users/details`, {
             headers: {
-                Authorization: `Bearer ${ localStorage.getItem('token') }`
+                Authorization: `Bearer ${token}`
             }
         })
         .then(res => res.json())
         .then(data => {
-          
             if (typeof data.user !== "undefined") {
-
                 setUser({
                   id: data.user._id,
                   isAdmin: data.user.isAdmin
                 });
-
             } else {
-
                 setUser({
                   id: null,
                   isAdmin: null
                 });
             }
         })
+        .catch(error => {
+            console.error('Failed to fetch user details:', error);
+            setUser({
+                id: null,
+                isAdmin: null
+            });
+        });
     }, []);
 
     return (

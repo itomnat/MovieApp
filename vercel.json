@@ -3,12 +3,11 @@
   "buildCommand": "cd client && npm run build",
   "outputDirectory": "client/build",
   "installCommand": "cd client && npm install",
-  "devCommand": "cd client && npm start",
   "framework": "create-react-app",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/client/build/$1"
+      "dest": "/index.html"
     }
   ]
 }
