@@ -1,0 +1,14 @@
+# Ignore server files only
+auth.js
+controllers/
+index.js
+models/
+routes/
+node_modules/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+README.md
+DEPLOYMENT.md
