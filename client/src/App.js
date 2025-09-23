@@ -33,13 +33,23 @@ function App() {
             return;
         }
 
-        fetch(`${process.env.REACT_APP_API_URL || 'https://movieapp-api-lms1.onrender.com'}/users/details`, {
+        const apiUrl = process.env.REACT_APP_API_URL || 'https://movieapp-api-lms1.onrender.com';
+        console.log('API URL:', apiUrl);
+        
+        fetch(`${apiUrl}/users/details`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
-        .then(res => res.json())
+        .then(res => {
+            console.log('API Response:', res.status);
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(data => {
+            console.log('User data:', data);
             if (typeof data.user !== "undefined") {
                 setUser({
                   id: data.user._id,

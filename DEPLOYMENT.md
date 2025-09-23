@@ -53,6 +53,14 @@ The project now has a proper `vercel.json` configuration that should work automa
 1. **Clear Vercel Cache**: In Vercel dashboard, go to Settings → Functions → Clear Cache
 2. **Redeploy**: Trigger a new deployment
 3. **Check Build Logs**: Look for any specific error messages
+4. **Check Console**: Open browser dev tools and check for JavaScript errors
+5. **Verify Environment Variables**: Make sure `REACT_APP_API_URL` is set correctly
+
+### Troubleshooting White Page:
+- Check browser console for JavaScript errors
+- Verify that static files (CSS, JS) are loading
+- Ensure API calls are working (check Network tab)
+- Make sure environment variables are set in Vercel
 
 **Important**: Since you're using Render for your API, Vercel will only serve the React frontend. The server files (`index.js`, `routes/`, etc.) are ignored via `.vercelignore`.
 
