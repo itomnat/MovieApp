@@ -37,7 +37,7 @@ REACT_APP_API_URL=https://movieapp-api-lms1.onrender.com
 ## Deployment Steps
 
 ### Current Configuration (Fixed)
-The project now has a proper `vercel.json` configuration that should work automatically.
+The project now has a proper `vercel.json` configuration and `.vercelignore` file that should work automatically.
 
 1. **Push to GitHub**: Make sure all changes are committed and pushed
 2. **Connect to Vercel**: Link your GitHub repository to Vercel
@@ -45,9 +45,10 @@ The project now has a proper `vercel.json` configuration that should work automa
 4. **Deploy**: Click deploy and wait for completion
 
 **No manual configuration needed** - Vercel will automatically:
-- Detect the React app in the `client` folder
+- Detect the React app in the `client` folder (not ignored by `.vercelignore`)
 - Run `npm install` and `npm run build` in the client directory
 - Serve the built files from `client/build`
+- Ignore server files (handled by `.vercelignore`)
 
 ### If Issues Persist:
 1. **Clear Vercel Cache**: In Vercel dashboard, go to Settings → Functions → Clear Cache

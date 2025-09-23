@@ -1,15 +1,18 @@
-# Ignore server files since we're using Render API
+# Ignore server files but keep client folder
 index.js
 routes/
 models/
 controllers/
 auth.js
-package.json
-package-lock.json
-node_modules/
 server/
+node_modules/
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+movieApp.json
+movieApp.md
+movieAppClient.json
+README.md
+replit.md
