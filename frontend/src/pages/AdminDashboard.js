@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config/api';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -18,13 +19,9 @@ const AdminDashboard = () => {
     genre: ''
   });
 
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  const fetchMovies = async () => {
+  const fetchMovies = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:4000/movies', {
+      const response = await axios.get(`${API_BASE_URL}/movies`, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setMovies(response.data);
@@ -33,7 +30,11 @@ const AdminDashboard = () => {
       setError('Failed to fetch movies');
       setLoading(false);
     }
-  };
+  }, [user.token]);
+
+  useEffect(() => {
+    fetchMovies();
+  }, [fetchMovies]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -48,13 +49,13 @@ const AdminDashboard = () => {
     try {
       if (editingMovie) {
         await axios.put(
-          `http://localhost:4000/movies/${editingMovie._id}`,
+          `${API_BASE_URL}/movies/${editingMovie._id}`,
           formData,
           { headers: { Authorization: `Bearer ${user.token}` } }
         );
       } else {
         await axios.post(
-          'http://localhost:4000/movies',
+          `${API_BASE_URL}/movies`,
           formData,
           { headers: { Authorization: `Bearer ${user.token}` } }
         );
@@ -90,7 +91,7 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this movie?')) {
       try {
-        await axios.delete(`http://localhost:4000/movies/${id}`, {
+        await axios.delete(`${API_BASE_URL}/movies/${id}`, {
           headers: { Authorization: `Bearer ${user.token}` }
         });
         fetchMovies();
