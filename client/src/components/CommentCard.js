@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Card, Button, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Card, Container } from 'react-bootstrap';
 
 export default function MovieCard({commentProp}) {
 
 	console.log(commentProp);
-	const { _id, comment, userId } = commentProp;
+	const { comment, userId } = commentProp;
 
 	return (
 		<Container className="col">

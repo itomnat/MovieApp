@@ -1,22 +1,12 @@
 import { useState, useEffect} from 'react';
-import { Table, Button, Modal, Form } from 'react-bootstrap';
-import Swal from 'sweetalert2';
+import { Table } from 'react-bootstrap';
 
 import EditMovie from './EditMovie';
 import DeleteMovie from './DeleteMovie';
-import { Link } from 'react-router-dom';
 
 export default function AdminView({ moviesData, fetchData }) {
 
 	const [movies, setMovies] = useState([]);
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
-	const [actors, setActors] = useState('');
-	const [director, setDirector] = useState('');
-	const [year, setYear] = useState(0);
-	const [genre, setGenre] = useState('');
-
-	const [showAdd, setShowAdd] = useState(false);
 
 	useEffect(() => {
 		const moviesArr = moviesData.map(movie => {
@@ -29,7 +19,7 @@ export default function AdminView({ moviesData, fetchData }) {
 					<td>{movie.year}</td>
 					<td>{movie.genre}</td>
 					<td className='text-center'>
-						<EditMovie movie={movie._id} fetchData={fetchData}/>	
+						<EditMovie movie={movie._id} fetchData={fetchData}/>
 						<DeleteMovie movie={movie._id} fetchData={fetchData}/>
 					</td>
 				</tr>
@@ -37,23 +27,14 @@ export default function AdminView({ moviesData, fetchData }) {
 		})
 
 		setMovies(moviesArr)
-	}, [moviesData]);
-
-	const openAdd = () => {
-		setShowAdd(true)
-	}
-
-	const closeAdd = () => {
-		setShowAdd(false);
-	}
-
+	}, [moviesData, fetchData]);
 
 	return(
 		<>
 
 			<div className='text-center mb-5'>
 				<h1 className="text-center my-4"> Admin Dashboard</h1>
-				<Link to="/addMovie" className='btn btn-primary' >Add Movie</Link>
+				<a href="/addMovie" className='btn btn-primary' >Add Movie</a>
 			</div>
 
 			<Table striped bordered hover responsive>

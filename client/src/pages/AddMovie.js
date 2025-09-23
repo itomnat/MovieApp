@@ -1,10 +1,8 @@
 import { useState, useContext} from 'react';
-import { Table, Button, Modal, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { Navigate, useNavigate } from 'react-router-dom';
 import UserContext from '../UserContext';
-
-import { Link } from 'react-router-dom';
 
 export default function AddMovie() {
 
@@ -14,7 +12,6 @@ export default function AddMovie() {
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
-	const [actors, setActors] = useState('');
 	const [director, setDirector] = useState('');
 	const [year, setYear] = useState(0);
 	const [genre, setGenre] = useState('');
@@ -121,7 +118,7 @@ export default function AddMovie() {
                         </Form.Group>   
                         <div className='d-flex justify-content-center'>
                             <Button variant="success" type="submit" className='my-3 mx-3'>Add Movie</Button>
-                            <Link className='btn btn-danger my-3 mx-3' to="/movies" >Cancel</Link>
+                            <a className='btn btn-danger my-3 mx-3' href="/movies" >Cancel</a>
                         </div>
 
                         

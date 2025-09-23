@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { Container, Card, Button, Row, Col, Modal, Form, Image } from 'react-bootstrap';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Container, Button, Row, Col, Modal, Form, Image } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
@@ -10,12 +10,9 @@ export default function MovieView() {
 
 	const { movieId } = useParams();
 	const { user } = useContext(UserContext);
-	
-	const navigate = useNavigate();
 
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
-	const [actors, setActors] = useState('');
 	const [director, setDirector] = useState('');
 	const [year, setYear] = useState(0);
 	const [genre, setGenre] = useState('');
@@ -23,7 +20,6 @@ export default function MovieView() {
 	const [comment, setComment] = useState("");
 	const [comments, setComments] = useState([]);
 
-	const [showEdit, setShowEdit] = useState(false);
 	const [showComment, setShowComment] = useState(false);
 
 
@@ -93,7 +89,6 @@ export default function MovieView() {
 
 			setTitle(data.title);
 			setDescription(data.description);
-			setActors(data.actors);
 			setDirector(data.director);
 			setYear(data.year);
 			setGenre(data.genre);
