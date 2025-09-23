@@ -13,8 +13,8 @@
     }
   ],
   "env": {
-    "MONGODB_URI": "mongodb+srv://admin:admin123@cluster0.zlyew.mongodb.net/movie-app?retryWrites=true&w=majority&appName=Cluster0",
-    "JWT_SECRET": "your-super-secret-jwt-key-change-this-in-production",
+    "MONGODB_STRING": "mongodb+srv://Nataniel:admin123@wdc028-course-booking.ypnycei.mongodb.net/fitnessAppTracker?retryWrites=true&w=majority&appName=WDC028-Course-Booking",
+    "JWT_SECRET_KEY": "ECommerceAPI",
     "PORT": "4000"
   }
 }

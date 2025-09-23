@@ -17,7 +17,7 @@ app.use(cors({
 }));
 
 // MongoDB database connection
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_STRING);
 
 mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas.'));
 mongoose.connection.on('error', (err) => console.error('MongoDB connection error:', err));
