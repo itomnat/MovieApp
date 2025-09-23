@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 export default function DeleteMovie({ movie, fetchData }) {
 
 	const deleteToggle = (movieId) => {
-		fetch(`http://localhost:4000/movies/deleteMovie/${movieId}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/movies/deleteMovie/${movieId}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
