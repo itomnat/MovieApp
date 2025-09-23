@@ -9,7 +9,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use(cors());
+app.use(cors({
+    origin: ["https://828db8ca-11ab-4f5f-941e-3883a981e3e8-00-28pstqjgo74bb.sisko.replit.dev", "http://localhost:3000"],
+    credentials: true
+}));
 
 //MongoDB database
 mongoose.connect("mongodb+srv://admin:admin123@cluster0.zlyew.mongodb.net/movie-app?retryWrites=true&w=majority&appName=Cluster0", {
@@ -27,7 +30,7 @@ app.use("/movies", movieRoutes);
 app.use("/users", userRoutes);
 
 if(require.main === module){
-    app.listen(process.env.PORT || port, () => {
+    app.listen(process.env.PORT || port, "localhost", () => {
         console.log(`API is now online on port ${ process.env.PORT || port }`)
     });
 }
