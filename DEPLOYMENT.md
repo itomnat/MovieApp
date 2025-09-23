@@ -39,7 +39,7 @@ REACT_APP_API_URL=https://movieapp-api-lms1.onrender.com
 1. **Push to GitHub**: Make sure all changes are committed and pushed
 2. **Connect to Vercel**: Link your GitHub repository to Vercel
 3. **Configure Build Settings**:
-   - Framework Preset: Create React App
+   - Framework Preset: **Other**
    - Build Command: `cd client && npm run build`
    - Output Directory: `client/build`
    - Install Command: `cd client && npm install`
@@ -47,6 +47,10 @@ REACT_APP_API_URL=https://movieapp-api-lms1.onrender.com
 5. **Deploy**: Click deploy and wait for completion
 
 **Important**: Since you're using Render for your API, Vercel will only serve the React frontend. The server files (`index.js`, `routes/`, etc.) are ignored via `.vercelignore`.
+
+**Alternative Method**: You can also use Vercel's automatic detection by:
+1. Setting the Root Directory to `client` in Vercel settings
+2. This will automatically detect it as a Create React App
 
 ## API Configuration
 
