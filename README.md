@@ -1,144 +1,176 @@
-# MERN Movie Catalog Application
+# Movie Catalog Application
 
-A full-stack MERN application for movie catalog management with user authentication and admin functionality.
+A MERN stack movie catalog system with authentication and admin functionality.
 
 ## Features
 
 ### All Users
-- View movies from catalog in card format
+- View movies from the catalog in card format
 - Simple registration with email and password
-- User login functionality
+- Login functionality
+- View individual movie details with comments
 
 ### Admin Users
-- Admin dashboard with movie table display
-- Create, update, and delete movies
-- Add movie button with id="addMovie"
+- Admin dashboard to display all movies in a table
+- Create new movies with "Add Movie" button
+- Edit and delete movies
+- Full CRUD operations
 
-### Logged-in Users
-- View detailed movie information
-- Add comments to movies
-- View movie comments
+## Tech Stack
+
+- **Frontend:** React.js with Bootstrap
+- **Backend:** Node.js with Express
+- **Database:** MongoDB
+- **Authentication:** JWT tokens
+- **API:** RESTful endpoints
+
+## API Integration
+
+This application integrates with the Movie API at:
+`https://movieapp-api-lms1.onrender.com`
+
+### API Endpoints Used:
+- `POST /users/login` - User authentication
+- `POST /users/register` - User registration
+- `GET /users/details` - Get user details
+- `GET /movies/getMovies` - Get all movies
+- `GET /movies/getMovie/:id` - Get single movie
+- `POST /movies/addMovie` - Add new movie
+- `POST /movies/addComment/:id` - Add comment to movie
+- `GET /movies/getComments/:id` - Get movie comments
+
+## Deployment on Vercel
+
+### Prerequisites
+- Vercel account
+- Git repository
+
+### Deployment Steps
+
+1. **Fork/Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd movie-catalog-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   cd client
+   npm install
+   ```
+
+3. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+4. **Deploy to Vercel**
+   - Connect your GitHub repository to Vercel
+   - Vercel will automatically detect the React app in the `client` folder
+   - The `vercel.json` configuration ensures proper routing
+
+5. **Environment Variables**
+   - In Vercel dashboard, add environment variable:
+   - `REACT_APP_API_URL=https://movieapp-api-lms1.onrender.com`
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+1. **Build the app**
+   ```bash
+   cd client
+   npm run build
+   ```
+
+2. **Deploy the build folder**
+   - Upload the `client/build` folder to your hosting service
+   - Ensure the API URL environment variable is set
+
+## Local Development
+
+1. **Start the backend server** (if running locally)
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+2. **Start the frontend**
+   ```bash
+   cd client
+   npm install
+   npm start
+   ```
+
+3. **Environment Setup**
+   - Create `.env` file in client directory:
+   ```
+   REACT_APP_API_URL=http://localhost:4000
+   ```
+
+## Admin Credentials
+
+- **Email:** admin@mail.com
+- **Password:** admin123
 
 ## Project Structure
 
 ```
-movieAppClient/
-├── .env
-├── .gitignore
-├── README.md
-├── TODO.md
-├── auth.js
-├── errorHandler.js
-├── index.js
-├── package.json
-├── controllers/
-│   ├── authController.js
-│   ├── movieController.js
-│   └── userController.js
-├── middleware/
-│   ├── admin.js
-│   └── authMiddleware.js
-├── models/
-│   ├── Movie.js
-│   └── User.js
-├── routes/
-│   ├── authRoutes.js
-│   ├── movieRoutes.js
-│   └── userRoutes.js
-└── frontend/
-    ├── package.json
-    ├── public/
-    │   └── index.html
-    └── src/
-        ├── App.js
-        ├── App.css
-        ├── index.js
-        ├── index.css
-        ├── components/
-        │   ├── Navbar.js
-        │   ├── Navbar.css
-        │   └── PrivateRoute.js
-        ├── context/
-        │   └── AuthContext.js
-        └── pages/
-            ├── Home.js
-            ├── Home.css
-            ├── Login.js
-            ├── Register.js
-            ├── Auth.css
-            ├── AdminDashboard.js
-            ├── AdminDashboard.css
-            ├── MovieDetail.js
-            └── MovieDetail.css
+movie-catalog-app/
+├── client/                 # React frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/     # Reusable components
+│   │   ├── pages/         # Page components
+│   │   └── App.js         # Main app component
+│   ├── package.json
+│   └── .env
+├── server/                # Express backend (if needed)
+├── vercel.json           # Vercel configuration
+└── README.md
 ```
 
-## Backend Setup
+## Features Implemented
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+✅ **Movie Catalog Display**
+- Movies displayed in responsive card layout
+- Each movie shows title, director, year, description, genre
+- "View Movie" button for detailed view
 
-2. Create .env file with:
-   ```
-   PORT=4000
-   MONGODB_URI=mongodb+srv://admin:admin123@cluster0.zlyew.mongodb.net/movie-app?retryWrites=true&w=majority&appName=Cluster0
-   JWT_SECRET=your-super-secret-jwt-key-here
-   ```
+✅ **Authentication System**
+- User registration with email/password
+- Login functionality
+- JWT token-based authentication
+- Protected routes for admin features
 
-3. Start the backend server:
-   ```bash
-   npm run dev
-   ```
+✅ **Admin Dashboard**
+- Table view of all movies
+- Add Movie functionality with form
+- Edit and delete movie operations
+- Admin-only access control
 
-## Frontend Setup
+✅ **Movie Details & Comments**
+- Individual movie view with full details
+- Comments system for logged-in users
+- Movie metadata display
 
-1. Navigate to frontend directory:
-   ```bash
-   cd frontend
-   ```
+✅ **API Integration**
+- All endpoints properly configured
+- Error handling for API calls
+- Token-based authentication
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+✅ **Deployment Ready**
+- Optimized build configuration
+- Vercel configuration included
+- Environment variables setup
 
-3. Start the development server:
-   ```bash
-   npm start
-   ```
+## Browser Support
 
-## API Endpoints
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-### Authentication
-- `POST /users/register` - User registration
-- `POST /users/login` - User login
+## License
 
-### Movies
-- `GET /movies` - Get all movies
-- `GET /movies/:id` - Get single movie
-- `POST /movies` - Create movie (Admin only)
-- `PUT /movies/:id` - Update movie (Admin only)
-- `DELETE /movies/:id` - Delete movie (Admin only)
-
-### Comments
-- `POST /movies/addComment/:id` - Add comment to movie
-- `GET /movies/getComments/:id` - Get movie comments
-
-## Admin Credentials
-- Email: admin@mail.com
-- Password: admin123
-
-## Deployment
-
-### Vercel Deployment
-1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
-
-## Development Notes
-
-- The application uses JWT for authentication
-- Admin users have full CRUD access to movies
-- Regular users can view movies and add comments
-- All movie data includes: title, director, year, description, genre, comments
+MIT License

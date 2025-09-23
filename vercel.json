@@ -2,30 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "frontend/package.json",
+      "src": "client/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build"
       }
-    },
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "index.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "build/$1"
+      "dest": "/client/$1"
     }
   ],
-  "env": {
-    "MONGODB_STRING": "mongodb+srv://Nataniel:admin123@wdc028-course-booking.ypnycei.mongodb.net/fitnessAppTracker?retryWrites=true&w=majority&appName=WDC028-Course-Booking",
-    "JWT_SECRET_KEY": "ECommerceAPI",
-    "PORT": "4000"
-  }
+  "outputDirectory": "client/build"
 }
