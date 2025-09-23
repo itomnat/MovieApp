@@ -24,8 +24,8 @@ mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atl
 const movieRoutes = require("../routes/movie");
 const userRoutes = require("../routes/user");
 
-app.use("/api/movies", movieRoutes);
-app.use("/api/users", userRoutes);
+app.use("/movies", movieRoutes);
+app.use("/users", userRoutes);
 
 // Serverless function export for Vercel
 module.exports = app;

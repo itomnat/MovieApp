@@ -67,11 +67,11 @@ This application integrates with the Movie API at:
 4. **Deploy to Vercel**
    - Connect your GitHub repository to Vercel
    - Vercel will automatically detect the React app in the `client` folder
-   - The `vercel.json` configuration ensures proper routing
+   - The `vercel.json` configuration ensures proper routing (API at `/api`, SPA fallback to `client/build/index.html`)
 
 5. **Environment Variables**
-   - In Vercel dashboard, add environment variable:
-   - `REACT_APP_API_URL=https://movieapp-api-lms1.onrender.com`
+   - The client production build reads `client/.env.production`
+   - Ensure `REACT_APP_API_URL=/api` for Vercel serverless API
 
 ### Manual Deployment
 
