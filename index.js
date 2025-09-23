@@ -10,12 +10,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(cors({
-    origin: ["https://828db8ca-11ab-4f5f-941e-3883a981e3e8-00-28pstqjgo74bb.sisko.replit.dev", "http://localhost:3000"],
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://movieapp-api-lms1.onrender.com'] 
+        : ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 
 //MongoDB database
-mongoose.connect("mongodb+srv://admin:admin123@cluster0.zlyew.mongodb.net/movie-app?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:admin123@cluster0.zlyew.mongodb.net/movie-app?retryWrites=true&w=majority&appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

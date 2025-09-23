@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.js",
+      "src": "index.js",
       "use": "@vercel/node"
     },
     {
@@ -16,12 +16,18 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "dest": "index.js"
+    },
+    {
+      "src": "/(users|movies)/.*",
+      "dest": "index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/build/$1"
+      "dest": "/client/build/index.html"
     }
   ],
-  "installCommand": "npm install && cd client && npm install"
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
