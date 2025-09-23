@@ -36,24 +36,23 @@ REACT_APP_API_URL=https://movieapp-api-lms1.onrender.com
 
 ## Deployment Steps
 
-### Method 1: Root Directory Approach (Recommended)
-1. **Push to GitHub**: Make sure all changes are committed and pushed
-2. **Connect to Vercel**: Link your GitHub repository to Vercel
-3. **Set Root Directory**: In Vercel project settings, set Root Directory to `client`
-4. **Set Environment Variables**: Add the variables listed above
-5. **Deploy**: Click deploy and wait for completion
+### Current Configuration (Fixed)
+The project now has a proper `vercel.json` configuration that should work automatically.
 
-### Method 2: Manual Configuration
 1. **Push to GitHub**: Make sure all changes are committed and pushed
 2. **Connect to Vercel**: Link your GitHub repository to Vercel
-3. **Configure Build Settings**:
-   - Framework Preset: **Create React App**
-   - Build Command: `npm run build`
-   - Output Directory: `build`
-   - Install Command: `npm install`
-   - Root Directory: `client`
-4. **Set Environment Variables**: Add the variables listed above
-5. **Deploy**: Click deploy and wait for completion
+3. **Set Environment Variables**: Add the variables listed above
+4. **Deploy**: Click deploy and wait for completion
+
+**No manual configuration needed** - Vercel will automatically:
+- Detect the React app in the `client` folder
+- Run `npm install` and `npm run build` in the client directory
+- Serve the built files from `client/build`
+
+### If Issues Persist:
+1. **Clear Vercel Cache**: In Vercel dashboard, go to Settings → Functions → Clear Cache
+2. **Redeploy**: Trigger a new deployment
+3. **Check Build Logs**: Look for any specific error messages
 
 **Important**: Since you're using Render for your API, Vercel will only serve the React frontend. The server files (`index.js`, `routes/`, etc.) are ignored via `.vercelignore`.
 
