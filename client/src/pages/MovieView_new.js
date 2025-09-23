@@ -28,7 +28,7 @@ export default function MovieView() {
 
 
 	const openComment = (movieId) => {
-		fetch(`${process.env.REACT_APP_API_URL}/movies/${movieId}`)
+		fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/${movieId}`)
 		.then(res => res.json())
 		.then(data => {
 			setTitle(data.title);
@@ -46,7 +46,7 @@ export default function MovieView() {
 	const addComment = (e, movieId) => {
 		e.preventDefault();
 
-		fetch(`${process.env.REACT_APP_API_URL}/movies/addComment/${movieId}`, {
+		fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/addComment/${movieId}`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default function MovieView() {
 
 	useEffect(()=> {
 
-		fetch(`${process.env.REACT_APP_API_URL}/movies/getMovie/${movieId}`, {
+		fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/getMovie/${movieId}`, {
 			headers: {
 			    Authorization: `Bearer ${localStorage.getItem('token')}`
 			}

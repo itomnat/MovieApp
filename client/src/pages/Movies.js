@@ -10,10 +10,10 @@ export default function Movies() {
 
 	const [movies, setMovies] = useState([]);
 
-	console.log(process.env.REACT_APP_API_URL)
+	console.log(process.env.REACT_APP_API_URL || '/api')
 
 	const fetchData = () => {
-		fetch(`${process.env.REACT_APP_API_URL}/movies/getMovies`, {
+		fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/getMovies`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`
 			}

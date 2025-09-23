@@ -24,7 +24,7 @@ export default function AddMovie() {
 	const AddMovie = (e) => {
 		e.preventDefault();
 
-		fetch(`${process.env.REACT_APP_API_URL}/movies/addMovie`, {
+		fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/addMovie`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',

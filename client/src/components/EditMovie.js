@@ -15,7 +15,7 @@ export default function EditMovie({ movie, fetchData }) {
         const [showEdit, setShowEdit] = useState(false);
 
         const openEdit = (movieId) => {
-                fetch(`${process.env.REACT_APP_API_URL}/movies/getMovie/${movieId}`, {
+                fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/getMovie/${movieId}`, {
                         headers: {
                                 Authorization: `Bearer ${localStorage.getItem('token')}`
                         },
@@ -43,7 +43,7 @@ export default function EditMovie({ movie, fetchData }) {
         const editMovie = (e, movieId) => {
                 e.preventDefault();
 
-                fetch(`${process.env.REACT_APP_API_URL}/movies/updateMovie/${movieId}`, {
+                fetch(`${process.env.REACT_APP_API_URL || '/api'}/movies/updateMovie/${movieId}`, {
                         method: 'PATCH',
                         headers: {
                                 'Content-Type': 'application/json',

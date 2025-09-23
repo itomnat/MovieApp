@@ -16,7 +16,7 @@ export default function Login() {
 
     const retrieveUserDetails = (token) => {
         
-        fetch(`${process.env.REACT_APP_API_URL}/users/details`, {
+        fetch(`${process.env.REACT_APP_API_URL || '/api'}/users/details`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -33,7 +33,7 @@ export default function Login() {
     function authenticate(e) {
         e.preventDefault();
 
-		fetch(`${process.env.REACT_APP_API_URL}/users/login`,{
+		fetch(`${process.env.REACT_APP_API_URL || '/api'}/users/login`,{
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json"
