@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const port = 4000;
+const port = 8000;
 
 const app = express();
 
@@ -30,7 +30,7 @@ app.use("/movies", movieRoutes);
 app.use("/users", userRoutes);
 
 if(require.main === module){
-    app.listen(process.env.PORT || port, "localhost", () => {
+    app.listen(process.env.PORT || port, "0.0.0.0", () => {
         console.log(`API is now online on port ${ process.env.PORT || port }`)
     });
 }
