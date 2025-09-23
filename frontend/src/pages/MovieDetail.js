@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config/api';
 import './MovieDetail.css';
 
 const MovieDetail = () => {
@@ -21,8 +22,8 @@ const MovieDetail = () => {
   const fetchMovieDetails = async () => {
     try {
       const [movieResponse, commentsResponse] = await Promise.all([
-        axios.get(`http://localhost:4000/movies/${id}`),
-        axios.get(`http://localhost:4000/movies/getComments/${id}`)
+        axios.get(`${API_BASE_URL}/movies/${id}`),
+        axios.get(`${API_BASE_URL}/movies/getComments/${id}`)
       ]);
 
       setMovie(movieResponse.data);
@@ -41,7 +42,7 @@ const MovieDetail = () => {
     setCommentLoading(true);
     try {
       await axios.post(
-        `http://localhost:4000/movies/addComment/${id}`,
+        `${API_BASE_URL}/movies/addComment/${id}`,
         { comment: newComment },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );

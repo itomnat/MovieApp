@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 import './Home.css';
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
 
   const fetchMovies = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/movies');
+      const response = await axios.get(`${API_BASE_URL}/movies`);
       setMovies(response.data);
       setLoading(false);
     } catch (error) {

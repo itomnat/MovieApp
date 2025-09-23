@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended:true}));
 // CORS configuration
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
-        ? process.env.FRONTEND_URL
+        ? process.env.FRONTEND_URL || 'https://movie-gkllcstb3-itomnat-5742s-projects.vercel.app'
         : ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
