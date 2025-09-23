@@ -8,7 +8,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(cors({
-    origin: ["*"],
+    origin: [
+        "http://localhost:3000",
+        "https://828db8ca-11ab-4f5f-941e-3883a981e3e8-00-28pstqjgo74bb.sisko.replit.dev",
+        /^https:\/\/.*\.vercel\.app$/,
+        /^https:\/\/.*\.vercel\.dev$/
+    ],
     credentials: true
 }));
 
